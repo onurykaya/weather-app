@@ -19,7 +19,8 @@ class App extends React.Component{
       temp_max: undefined,
       description: undefined,
       icon: undefined,
-      error: false
+      error: false,
+      visible: false
     };
     this.icon = {
       Thunderstrom: "wi-thunderstorm",
@@ -93,6 +94,7 @@ class App extends React.Component{
         temp_min: response.main.temp_min,
         temp_max: response.main.temp_max,
         description: response.weather[0].description,
+        visible: true
       })
       console.log(response)
       this.getIcon(this.icon, response.weather[0].id)
@@ -109,7 +111,7 @@ class App extends React.Component{
     return(
       <div className="App">
       <Form error = {this.state.error} submitWeather={this.getWeather} />
-      <Weather  icon={this.state.icon} city={this.state.city} country={this.state.country} temp={this.state.temp} temp_min = {this.state.temp_min} temp_max={this.state.temp_max} description= {this.state.description} />
+      <Weather  visible={this.state.visible} icon={this.state.icon} city={this.state.city} country={this.state.country} temp={this.state.temp} temp_min = {this.state.temp_min} temp_max={this.state.temp_max} description= {this.state.description} />
     </div>
     );
   }

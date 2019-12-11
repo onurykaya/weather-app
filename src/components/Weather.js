@@ -14,8 +14,11 @@ const minMax = (min, max) =>{
 
 export default function Weather(props) {
     return (
+      
       <div className="container">
-        <div className="cards">
+        
+          {
+            props.visible ? <div className="cards">
           <h1> {props.city}</h1>
           <h5 className="py-4">
             <i className={`wi ${props.icon} display-1`}></i>
@@ -30,6 +33,10 @@ export default function Weather(props) {
           }
           <h5 className="py-3"> {props.description} </h5>
         </div>
-      </div>
+       : <div>Lütfen şehir ve ülke giriniz</div>
+          }
+      
+        </div>
+        
     );
 }
